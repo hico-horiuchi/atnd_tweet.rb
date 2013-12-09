@@ -1,4 +1,4 @@
-ENV['BUNDLE_GEMFILE'] = File.expand_path(File.join(File.dirname($0), "Gemfile"))
+ENV['BUNDLE_GEMFILE'] = File.expand_path(File.join(File.dirname($0), 'Gemfile'))
 require 'bundler/setup'
 require 'oauth'
 require 'twitter'
@@ -18,7 +18,7 @@ unless File.exist?(access_file_name)
   consumer = OAuth::Consumer.new(consumer_key, consumer_secret, site: 'https://api.twitter.com')
   request_token = consumer.get_request_token
   puts request_token.authorize_url
-  print "PIN code: "
+  print 'PIN code: '
   pin = gets.to_i
   access_token = request_token.get_access_token(oauth_verifier: pin)
   File.open(access_file_name, 'w') do |f|

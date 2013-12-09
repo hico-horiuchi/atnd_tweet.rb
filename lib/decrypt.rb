@@ -8,5 +8,5 @@ def decrypt(string, password)
   decrypted = OpenSSL::Cipher::Cipher.new('aes-256-cbc')
   decrypted.decrypt
   decrypted.pkcs5_keyivgen(password)
-  return decrypted.update(inflated) + decrypted.final
+  decrypted.update(inflated) + decrypted.final
 end

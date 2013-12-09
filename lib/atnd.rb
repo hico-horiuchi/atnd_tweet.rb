@@ -3,7 +3,7 @@ require 'open-uri'
 require 'nokogiri'
 
 class Atnd
-  BASE_URL = "http://atnd.org/events/"
+  BASE_URL = 'http://atnd.org/events/'
 
   attr_reader :title, :entry
 
@@ -16,11 +16,11 @@ class Atnd
 
   def get_information
     html = Nokogiri::HTML(open(@url))
-    @title = html.title.gsub(/ : ATND$/, "")
+    @title = html.title.gsub(/ : ATND$/, '')
     @entry = html.css('strong.red').first.text
   end
 
   def make_tweet
-    return "「#{@title}」やります! 現在の参加者は#{@entry}人です。 #{@url}"
+    "「#{@title}」やります! 現在の参加者は#{@entry}人です。 #{@url}"
   end
 end
